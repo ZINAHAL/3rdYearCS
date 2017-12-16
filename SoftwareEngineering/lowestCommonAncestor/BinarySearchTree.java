@@ -61,7 +61,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> implements Bin
 	
 	private Value get(Node parent, Key k) {
 		
-		if(parent == null) {
+		if(parent == null || k == null) {
 			return null;
 		}
 		
@@ -78,6 +78,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> implements Bin
 		
 		return parent.data;
 	}
+	
 
 	public Key lowestCommonAncestor(Key x, Key y) {
 		
@@ -88,7 +89,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> implements Bin
 	private Key lowestCommonAncestor(Node parent, Key x, Key y)
 	{
 		//No lowestCommonAncestor
-		if(parent == null)
+		if(parent == null || get(x) == null || get(y) == null || x == y)
 		{
 			return null;
 		}
@@ -108,7 +109,7 @@ public class BinarySearchTree<Key extends Comparable<Key>, Value> implements Bin
 			return lowestCommonAncestor(parent.right, x, y);
 		}
 		
-		//otherwise if x or y greater than the parent's key then the parent is the lowestCommonAncestor
+		//otherwise if x or y greater than or equals to the parent's key then the parent is the lowestCommonAncestor
 		return parent.key;
 	}
 	
