@@ -1,0 +1,7 @@
+
+public interface BinarySearchTreeI<K, Value> {
+	
+	public void insert(K k, Value v);
+	public Value get(K k);
+	
+}

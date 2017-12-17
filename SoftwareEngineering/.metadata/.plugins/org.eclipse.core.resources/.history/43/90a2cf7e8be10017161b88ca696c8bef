@@ -1,0 +1,80 @@
+
+public class BinarySearchTree<Key extends Comparable<Key>, Value> implements BinarySearchTreeI<Key, Value> {
+	
+	//This class doesn't contain a construct.
+	
+	private class Node {
+		
+		private Key key;
+		private Value data;
+		private Node left, right;
+		
+		public Node(Key key, Value data, Node left, Node right) {
+			
+			this.key = key;
+			this.data = data;
+			this.left = left;
+			this.right = right;
+		}
+	}
+	
+	private Node root = null;
+	
+
+	public void insert(Key k, Value v) {
+		
+		root = insert(root, k, v);
+	}
+	
+	private Node insert(Node parent, Key k, Value v) {
+		
+		if(parent == null) {
+			return new Node(k, v, null, null);
+		}
+		
+		int comparison = k.compareTo(parent.key);
+		if(comparison == -1) {
+			
+			parent.left = insert(parent.left, k, v);
+		}
+		
+		if(comparison == 1) {
+			
+			parent.right = insert(parent.right, k, v);
+		}
+		
+		if(comparison == 0) {
+			
+			parent.data = v;
+		}
+		
+		return parent;
+	}
+
+	public Value get(Key k) {
+		
+		return get(root, k);
+	}
+	
+	private Value get(Node parent, Key k) {
+		
+		if(parent == null) {
+			return null;
+		}
+		
+		int comparison = k.compareTo(parent.key);
+		if(comparison == -1) {
+			
+			return get(parent.left, k);
+		}
+		
+		if(comparison == 1) {
+			
+			return get(parent.right, k);
+		}
+		
+		return parent.data;
+	}
+	
+
+}

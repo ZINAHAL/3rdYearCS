@@ -1,0 +1,45 @@
+import java.time.MonthDay;
+
+
+public class UsersPushData {
+	
+	private String starting_username;				// the starting point from which the data will be gathered
+	private int recursive_depth;					// 
+	private MonthDay from_date;
+	private MonthDay to_date;
+	
+	public UsersPushData(String starting_username, int recursive_depth, MonthDay from_date, MonthDay to_date)
+	{
+		this.starting_username = starting_username;
+		this.recursive_depth = recursive_depth;
+		this.from_date = from_date;
+		this.to_date = to_date;
+	}
+	
+	
+	private int getDay(String date)
+	{
+		String str_num = date.substring(8, 9);
+		char x = date.charAt(9);
+		if(x >= '0' && x <= '9')
+		{
+			str_num = str_num + x;
+		} 
+		
+		return Integer.parseInt(str_num);
+	}
+	
+	private int getMonth(String date)
+	{
+		String str_num = date.substring(5, 6);
+		char x = date.charAt(6);
+		if(x >= '0' && x <= '9')
+		{
+			str_num = str_num + x;
+		} 
+		
+		return Integer.parseInt(str_num);
+	}
+	
+	
+}

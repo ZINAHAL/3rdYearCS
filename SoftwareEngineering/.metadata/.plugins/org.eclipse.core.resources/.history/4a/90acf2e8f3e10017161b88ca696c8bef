@@ -1,0 +1,33 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+
+public class TestPack {
+	
+	
+
+	@Test
+	public void testInsertAndGet() {
+		
+		BinarySearchTree<Integer, Character> bst = new BinarySearchTree<Integer, Character>();
+		bst.insert(1, 'A');
+		bst.insert(2, 'B');
+		bst.insert(3, 'C');
+		bst.insert(4, 'D');
+		
+		assertEquals(Character.valueOf('D'), bst.get(4));
+		assertEquals(Character.valueOf('C'), bst.get(3));
+		assertEquals(Character.valueOf('B'), bst.get(2));
+		assertEquals(Character.valueOf('A'), bst.get(1));
+		
+		assertEquals(null, bst.get(null));
+		assertEquals(null, bst.get(66));
+		assertEquals(null, new BinarySearchTree<Integer, Character>().get(99));
+	}
+	
+	
+	
+
+	
+}

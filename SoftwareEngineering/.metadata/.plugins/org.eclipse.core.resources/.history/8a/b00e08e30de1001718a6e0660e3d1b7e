@@ -1,0 +1,6 @@
+
+public class UsersPushData {
+	
+	private String starting_username;
+	
+}
