@@ -12,6 +12,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -44,6 +45,12 @@ public class APIApplication {
 
 		System.out.println("I reached the end!!");
 		//*****************************************************************************************
+		
+		Gson gson = new Gson();
+		FileWriter users_weekly_commits_file = new FileWriter("users_weekly_commits.json");
+		users_weekly_commits_file.write(gson.toJson(DataRetrieval.result));
+		users_weekly_commits_file.flush();
+		
 		
 		
 		
