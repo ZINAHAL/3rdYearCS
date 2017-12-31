@@ -19,8 +19,8 @@ public class DataRetrieval {
 	
 	/*-----------------------PART1-------------------
 	 * GOAL
-	 * - To collect the number of commits that each user does in week
-	 * - Store the collected data in a JSON file 
+	 * - To collect the number of commits that each user does in a week
+	 * - The frequency for each commit number is calculated and stored in a .csv file that has the following heading: Commits, Frequency 
 	 * - Draw a bar chart of collected data
 	 * 
 	 * APPROACH TAKEN
@@ -38,7 +38,16 @@ public class DataRetrieval {
 	
 	
 	
-	
+	/* How recursion works in the below methods
+	 * 
+	 * 			0			phadej
+ 			/    	 \
+		  1      	  1		phadej's followers
+		 /  \    	 /  \
+		2   2       2    2	the followers for each phadej's follower
+	 * 
+	 * 
+	 */
 	public static void gatherFollowersUsernames(String parent_username, int recursive_no) throws Exception {
 		
 		if(recursive_no == 0)
@@ -191,10 +200,10 @@ public class DataRetrieval {
 	}
 	
 	/*PROBLEMS
-	 * I believe the above code works.
+	 * I believe the above code works but I'm not getting what I'm expecting.
 	 * THE REASONS:
 	 * - I seem to be exceeding the API rate limit of 60 requests per hour  
-	 * - The HTTP connection is not kept alive
+	 * - The HTTP connection is not being kept alive
 	 * 
 	 */
 	
