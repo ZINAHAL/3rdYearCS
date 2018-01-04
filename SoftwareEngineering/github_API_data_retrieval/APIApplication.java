@@ -50,7 +50,7 @@ public class APIApplication {
 		Integer[] commits = DataRetrieval.result.toArray(new Integer[DataRetrieval.result.size()]);
  		
 		FileWriter users_weekly_commits_file = new FileWriter("users_weekly_commits.csv");
-		users_weekly_commits_file.write("Commits, Frequency");
+		users_weekly_commits_file.write("Commits,Frequency");
 		users_weekly_commits_file.write("\n");
 		
 		int i = 0;
