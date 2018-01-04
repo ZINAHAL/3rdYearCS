@@ -4,13 +4,44 @@
 <head>
     <meta charset = "utf-8" />
     <title>Bar Chart</title>
-    <script src = "http://d3js.org/d3.v3.min.js"></script>
+    <script src = "https://d3js.org/d3.v4.min.js"></script>
 </head>
 
 <body>
 
     <script>
-        var canves = d3.select("body").append("svg").attr("width", 500).attr("height", 500);
+
+        var canves_width = 1000;
+        var canves_height = 800;
+        var bar_width = 35;
+        var bar_offset = 5;
+
+
+        d3.csv("test.csv", function(uploaded_data) {
+
+            var freq = uploaded_data.map(function(i) {     
+                return parseInt(i.Frequancy); 
+            });
+
+            console.log(freq);
+
+            //var nums = [100, 200, 300, 400];
+
+            var canves = d3.select("Body")
+                            .append("svg")
+                            .attr("width", canves_width)
+                            .attr("height", canves_height)
+                            .style("background", "lightgray")
+                            .selectAll("rect")
+                            .data(freq)
+                            .enter()
+                            .append("rect")
+                            .style("fill", "red")
+                            .attr("width", bar_width)
+                            .attr("height", function(d) { return d; })
+                            .attr("x", function(d, i) { return i * (bar_width + bar_offset); })
+                            .attr("y", function(d) { return canves_height - d; });
+        })
     
     </script>
     
