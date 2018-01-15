@@ -9,15 +9,18 @@
 
 <body>
 
+    <h2>COMMITS vs. FREQUINCY </h2>
+    <p>hello world!!</p>
+
     <script>
 
-        var canves_width = 1000;
+        var canves_width = 2000;
         var canves_height = 800;
         var bar_width = 35;
         var bar_offset = 5;
 
 
-        d3.csv("test.csv", function(uploaded_data) {
+        d3.csv("sample_data.csv", function(uploaded_data) {
 
             var freq = uploaded_data.map(function(i) {     
                 return parseInt(i.Frequancy); 
