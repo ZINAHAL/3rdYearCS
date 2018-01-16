@@ -1,17 +1,17 @@
+<!-- The main part of this code was taken from <<https://bl.ocks.org/mbostock/3885304>> -->
 <!DOCTYPE html>
-
 <meta charset="utf-8">
 <title>Bar Chart</title>
 
 <style>
 .bar {
-  fill: steelblue;
+  fill: rgb(70, 180, 70);
 }
-
+/*
 .bar:hover {
   fill: brown;
 }
-
+*/
 .axis--x path {
   display: none;
 }
@@ -23,6 +23,15 @@
 <script src="https://d3js.org/d3.v4.min.js"></script>
 
 <script>
+
+var tooltip = d3.select("body").append("div")
+                .style("position", "absolute")
+                .style("background", "#ff0000")
+                .style("padding", "5 15px")
+                .style("border", "1px #333 solid")
+                .style("border-radius", "5px")
+                .style("opacity", "0")
+
 
 var svg = d3.select("svg"),
     margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -66,10 +75,26 @@ d3.csv("sample_data.csv", function(d) {
       .attr("x", function(d) { return x(d.Commits); })
       .attr("y", function(d) { return y(d.Frequancy); })
       .attr("width", x.bandwidth())
-      .attr("height", function(d) { return height - y(d.Frequancy); });
+      .attr("height", function(d) { return height - y(d.Frequancy); })
+      .on("mouseover", function(d) {
+          tooltip.transition().style("opacity", 1)
+          tooltip.html(d.Frequancy) 
+                 .style("left", (d3.event.pageX) + "px")
+                 .style("top", (d3.event.pageY) + "px")
+          d3.select(this).style("opacity", 0.5)
+      })
+      .on("mouseout", function(d) {
+          tooltip.transition().style("opacity", 0)
+          d3.select(this).style("opacity", 1)
+      })
 });
 
 </script>
 
-<h2>hello world</h2>
+<h2>About The Graph...</h2>
+<p>
+  The above graph was constructed from data that was extracted from Github using the Github API.
+  The X-axis shows the number of commits a finite set of users did within a week. The Y-axis shows the frequency of commits. 
+  The frequency can be seen by placing the mouse over a bar. 
+</p>
 </body>
