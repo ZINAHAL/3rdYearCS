@@ -19,12 +19,12 @@ public class DataRetrieval {
 	
 	/*-----------------------PART1-------------------
 	 * GOAL
-	 * - To collect the number of commits that each user does in a week
+	 * - To collect the number of commits that each user did in the duration of one week (10/12 - 17/12)
 	 * - The frequency for each commit number is calculated and stored in a .csv file that has the following heading: Commits, Frequency 
 	 * - Draw a bar chart of collected data
 	 * 
 	 * APPROACH TAKEN
-	 * - Collected all the followers' usernames of the given username and stored it in a list. In this case the github username that I will start with is ..... 
+	 * - Collected all the followers' usernames of the given username and stored it in a list. In this case the github username that I will start with is "phadej"
 	 * - Then counted the No. of push events that each follower did within the range of the given dates. The result is then stored in a list 
 	 * - Some followers can be following other followers in the list. This leads to repetition in the data being collected. However this is prevented by having the method 
 	 *   "isUsernameSeenBefore"
